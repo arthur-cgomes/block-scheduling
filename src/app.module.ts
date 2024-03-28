@@ -5,6 +5,8 @@ import { config } from 'dotenv';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './user/entity/user.entity';
+import { BlockModule } from './block/block.module';
+import { SchedulingModule } from './scheduling/scheduling.module';
 
 config();
 
@@ -35,6 +37,8 @@ config();
     }),
     AuthModule,
     UserModule,
+    BlockModule,
+    SchedulingModule,
   ],
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { BaseCollection } from '../../common/entity/base.entity';
 import { BeforeInsert, BeforeUpdate, Column, Entity, Unique } from 'typeorm';
+import { UserType } from '../../common/enum/user-type.enum';
 import * as bcrypt from 'bcrypt';
 
 @Entity('user')
@@ -26,6 +27,13 @@ export class User extends BaseCollection {
   })
   @Column({ type: 'varchar', length: 150 })
   name: string;
+
+  @ApiProperty({
+    type: String,
+    description: 'Tipo do usuário',
+  })
+  @Column({ type: 'enum', enum: UserType, default: UserType.USER })
+  type: UserType;
 
   @BeforeInsert()
   @BeforeUpdate()
